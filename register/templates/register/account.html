@@ -1,0 +1,227 @@
+{% extends "register/base.html" %}
+<html lang="en">
+{% load static %}
+<head>
+	{% block title %}
+		<title>Account | Medsbuy</title>
+	{% endblock title %}
+</head>
+
+<body>
+{% block content %}
+	<style>
+		/* Left Section */
+		ul.menu-category li {
+			position: relative;
+			display: block;
+			border-bottom: 1px solid #e4e4e4;
+		}
+		ul.menu-category li a{
+			color: #212520;
+		}
+		ul.menu-category {
+			padding: 0;
+		}
+		.menu-category > li > a {
+			display: block;
+			padding: 10px 18px;
+		}
+		.menu-category .has-submenu > a:after {
+			content: "›";
+			font-size: 24px;
+			color: #999;
+			line-height: 18px;
+			font-weight: bold;
+			float: right;
+		}
+		h6.title-category {
+			font-size: 2rem;
+		}
+		/* profile */
+		.edit-profile{
+			border-radius: 20px;
+			overflow: hidden;
+		}
+		.card.right-box.edit-profile h3 {
+			color: #657d09;
+			background: #e0ecb3;
+			text-align: center;
+			padding: 2px 10px;
+		}
+		.card.right-box.edit-profile h3 img {
+			max-width: 120px;
+			margin-right: 3em;
+		}
+		.card.right-box.edit-profile{
+			box-shadow: 0 0 4px #666;
+		}
+		.profile-form, .edit-profile{
+			padding: 40px;
+			font-family: 'Crimson Text', serif;
+			font-weight: bold;
+		}
+		.profile-form input, .profile-form textarea, .edit-profile input{
+			font-family: 'Crimson Text', serif;
+			font-weight: bold;
+			background-color: #fffffe !important;
+			border: 1px solid #e0ecb3;
+			font-size: 16px;
+		}
+		.profile-form .btn-primary{
+			font-family: 'Alegreya', serif;
+			font-size: 22px;
+			padding: 4px 60px;
+			background-color: #ff9923;
+			border-color: #ff9923;
+		}
+		.profile-form .form-group.form-row {
+			border-bottom: 1px solid #dedede;
+			padding-bottom: 15px;
+		}
+		.profile-form .form-group.form-row label {
+			text-align: center;
+			padding-top: 15px;
+			font-size: medium;
+		}
+		.modal-body input{
+			height: auto;
+		}
+		.modal-footer{
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+		.modal-footer button{
+			background-color: #ff9923;
+			border-color: #ff9923;
+			font-size: inherit;
+			padding: 10 20px;
+		}
+	</style>
+	<div class="container">
+		<!-- ========================= SECTION MAIN  ========================= -->
+		<section class="section-main padding-y" style="height: auto;">
+			<main class="">
+				<div class="">
+					<h6 class="title-category">Your Account</h6>
+					<div class="row">
+						<aside class="col-lg col-md-3">
+							<nav class="card" style="box-shadow: 0 0 3px #666">
+								<ul class="menu-category">
+									<li class="has-submenu"><a href="../profile">Account info</a></li>
+									<li class="has-submenu"><a href="#my-wallet.html"> My wallet</a></li>
+									<li class="has-submenu"><a href="#order.html"> My order</a></li>
+									<li class="has-submenu"><a href="#notification.html"> Notifications</a></li>
+									<li class="has-submenu"><a href="#order-history.html">Order history</a></li>
+									<li class="has-submenu"><a href="#my-consultation.html"> My consultation</a></li>
+									<li class="has-submenu"><a href="../change-password"> Change Passowrd</a></li>
+									<li class="has-submenu"><a href="#asked-questions.html"> Ask question</a></li>
+									<li class="has-submenu"><a href="#refer-&-earn.html"> Refer & earn</a></li>
+									<li class="has-submenu"><a href="#rate-us.html"> Rate us</a></li>
+									<li class="has-submenu"><a href="#terms-and-conditions.html"> Legal information</a></li>
+									<li class="has-submenu"><a href="#"> Need help?</a></li>
+									<li class="has-submenu"><a href="#contact-us.html"> Contact us</a></li>
+									<li class="has-submenu"><a href="../../logout"> Logout</a></li>
+								</ul>
+							</nav>
+						</aside> <!-- col.// -->
+						<div class="col-md-9 col-xl-9 col-lg-9">
+							<div class="card right-box edit-profile">
+								<h3><img src="{% static 'register/images/mp-logo.png' %}"><span>Profile Name : </span>{{ user.username }}</h3>
+								<div class="profile-form">
+										<div class="form-group form-row">
+											<label class="col-md-5">Email ID :</label>
+											<div class="col-md-7">
+												<input type="email" class="form-control" value="{{ user.email }}" readonly>
+											</div>
+									</div>
+									<div class="form-group form-row">
+										<label class="col-md-5">Mobile No. :</label>
+										<div class="col-md-7">
+											<input type="text" class="form-control" value="{{ user.mobile }}" readonly>
+										</div>
+								</div>
+								<div class="form-group form-row">
+									<label class="col-md-5">Address :</label>
+									<div class="col-md-7">
+										<textarea class="form-control" readonly>{{ user.address }}
+										</textarea>
+									</div>
+							</div>
+							<div class="text-center">
+								<button class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal">EDIT PROFILE</button>
+							</div>							
+						</div>
+								
+							</div>
+
+
+						</div> <!-- col.// -->
+
+					</div> <!-- row.// -->
+
+				</div> <!-- card-body.// -->
+			</main> <!-- card.// -->
+
+		</section>
+		<!-- ========================= SECTION MAIN END// ========================= -->
+
+		<!-- =============== SECTION REGION =============== -->
+		<!-- =============== SECTION REGION .//END =============== -->		
+	</div>
+	<!-- container end.// -->
+
+	<!-- Modal popup -->
+	<!-- Modal -->
+	<div class="modal fade edit-profile" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		</div>
+		<div class="modal-body">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="modal-body">
+					{{ form.as_p }}
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- Modal Poup end -->
+	<!-- ========================= FOOTER END // ========================= -->
+	<script>
+		(function() {
+			// Add event listener
+			document.addEventListener("mousemove", parallax);
+			const elem = document.querySelector("#parallax");
+			// Magic happens here
+			function parallax(e) {
+				let _w = window.innerWidth/2;
+				let _h = window.innerHeight/2;
+				let _mouseX = e.clientX;
+				let _mouseY = e.clientY;
+				let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+				let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+				let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+				let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+				console.log(x);
+				elem.style.backgroundPosition = x;
+			}
+			})();
+			$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').trigger('focus')
+		})
+	</script>
+{% endblock content %}
+
+</body>
+
+</html>

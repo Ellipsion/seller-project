@@ -1,39 +1,41 @@
-<!doctype html>
+{% load static %}
 <html>
 <head>
-    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <title>Medsbuy | SignIn</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'register/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'register/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'register/css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'register/css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/8eaff967ad.js" crossorigin="anonymous"></script>
+    {% block title %}
+        <title>Medsbuy | SignIn</title>
+    {% endblock title %}
+    <link href=" {% static 'register/css/healthmug-combined-eba31cc4d9.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'register/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'register/css/login.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'register/css/custom.css' %}" type="text/css" rel="stylesheet">
+    <script src="{% static 'register/js/healthmug-combined-59d77d8095.js' %}" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://kit.fontawesome.com/8eaff967ad.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'register/js/bootstrap.bundle.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'register/js/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'register/js/slick.js' %}"></script>
+    <script type="text/javascript" src="{% static 'register/js/jquery.matchHeight.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'register/js/base_script.js' %}"></script>
+    
 </head>
 
-<body data-new-gr-c-s-check-loaded="8.867.0" class="">
+<body>
 <div class="wrapper">
 <div class="top-main">
     <div class="top w-100 float-left">
         <div class="">
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-3 d-nd d-lg-block">
-                    <a href="/" class="logo float-left" style="padding-left: 20px;"><img
-                            src="{% static 'img/medsbuy-logo.png' %}" style="width: 260px;" alt="medsbuy-logo"></a>
+                    <a href="/" class="logo float-left" style="padding-left: 20px;"><img src="{% static 'register/images/medsbuy-logo.png' %}" style="width: 260px;" alt="medsbuy-logo"></a>
                 </div>
                 <div class="col-xl-9 col-lg-9">
                     <div class="top-search float-left kjl" style="padding-top: 10px;">
                         <div class="d-flex align-items-center justify-content-end">
                             <div class="header-search-wrap">
                                 <form action="/search/" method="GET" class="kol">
-                                    <input type="hidden" name="csrfmiddlewaretoken" value="jjWvLo40si3nZTiQPjjJxD8KQAoOdKD5gEqOLD1BXpJbmIPPLgobl3XDjFQyJOHy">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="hXsEez6kyCP4l7CrpQL61fJYQclLjHPseiWXeO3V3JvSIW9qlNQyPFyRjhNvPLTV">
                                     <input type="text" name="keyword" value="" placeholder="Search for your item's type.....">
                                     <select class="custom-select" name="cat_id">
                                         <option value="">All Categories</option>
@@ -45,7 +47,7 @@
                                         <option value="4">Baby Care</option>
                                         <option value="3">Mother Care</option>
                                     </select>
-                                    <button class="kls" type="submit"><i class="fas fa-search"></i></button>
+                                    <button class="kls" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -53,24 +55,31 @@
 
                     <div class="top-right float-right text-center klf">
                         <a href="javascript:void(0)" class="search_list top-contact top-rlink d-inline-block">
-                            <i class="fa fa-search"></i>
+                            <i class="fa fa-search" aria-hidden="true"></i>
                         </a>
                         <a href="/category/deals/" class="top-contact top-rlink d-inline-block">
                             <img src="{% static 'register/images/offers1.png' %}" style="width: 24px;">
                             <span class="d-block">Offers</span>
                         </a>
                         
-                        <a href="/signin/" class="top-signIn top-rlink d-inline-block">
-                            <i class="fa fa-user-alt"></i>
-                            <span class="d-block">Sign In</span>
-                        </a>
+                        {% if user.is_authenticated %}
+                            <a href="../../../accounts/profile" class="top-signIn top-rlink d-inline-block">
+                                <i class="fa fa-user-alt" aria-hidden="true"></i>
+                                <span class="d-block">{{ user.username }}</span>
+                            </a>
+                        {% else %}
+                            <a href="../../../login" class="top-signIn top-rlink d-inline-block">
+                                <i class="fa fa-user-alt" aria-hidden="true"></i>
+                                <span class="d-block">Sign In</span>
+                            </a>
+                        {% endif %}
                         
-                        <a href="#" style="display: none;" class="top-contact top-rlink d-inline-block-1">
-                            <img src="{% static 'img/sell_us.png'%}" style="width: 24px;">
+                        <a href="../../seller/" style="display: none;" class="top-contact top-rlink d-inline-block-1">
+                            <img src="{% static 'register/images/sell_us.png' %}" style="width: 24px;">
                             <span class="d-block">Sell with us</span>
                         </a>
                         <a href="/cart/" class="top-cart d-inline-block">
-                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             <span>0</span>
                         </a>
                     </div>
@@ -83,21 +92,14 @@
             <input type="text" class="rkl" placeholder="Search for your item's type.....">
             <select class="custom-select">
                 <option selected="">All Categories</option>
-                                        <option>Homeopathy</option>
-                                        <option>Ayurvedic</option>
-                                        <option>Unani</option>
-                                        <!--option>Consumer Electronics</option-->
-                                       <!--  <option>Health &amp; Wellness</option> -->
-                                        <option>Beauty &amp; Personal Care</option>
-                                        <!--option>Shoes</option-->
-                                        <option>Baby Care</option>
-                                        <option>Mother Care</option>
-                                        <!--option>Home Appliances</option>
-                                        <option>Food</option>
-                                        <option>Underwear &amp; Sleepwear</option-->
-                                        <!--option>In All Categories</option-->
+                <option>Homeopathy</option>
+                <option>Ayurvedic</option>
+                <option>Unani</option>
+                <option>Beauty &amp; Personal Care</option>
+                <option>Baby Care</option>
+                <option>Mother Care</option>
             </select>
-            <button class="kls"><i class="fas fa-search"></i></button>
+            <button class="kls"><i class="fas fa-search" aria-hidden="true"></i></button>
         </form>
     </div>
 
@@ -105,18 +107,15 @@
 </div>
 <!--top end-->
 <div class="mainmenu float-left w-100">
-    <div class="container" style="
-    background-color: #82b641;">
-        <span class="menulinks" id="menulinks">
-        <ul style="display: flex; align-items: center; justify-content: center; line-height: 30px;">
+    <div class="container">
+        <span class="menulinks"><i></i></span>
+        <ul>
             <li><a href="/category/homeopathy/">Homeopathy</a></li>
             <li><a href="/category/ayurveda/">Ayurvedic</a></li>
             <li><a href="/category/unani/">Unani</a></li>
-            <!-- <li><a href="/category/health-wellness/">Health &amp; Wellness</a></li> -->
-            <li style="width:15%"><a href="/category/beauty-personal-care/">Beauty &amp; Personal Care</a></li>
+            <li><a href="/category/beauty-personal-care/">Beauty &amp; Personal Care</a></li>
             <li><a href="/category/baby-care/">Baby Care</a></li>
             <li><a href="/category/mother-care/">Mother Care</a></li>
-            <!-- <li class="more-link"><a href="#">More</a></li> -->
         </ul>
     </div>
     <!--container end-->
@@ -131,50 +130,12 @@
     top: 0
 }
 
-.container ul li{
-    padding-left: 10px;
-    width: 10%;
-    height: 30px;
-}
-
-.container ul li a{
-    color: whitesmoke;
-}
-
 .bar {
     width: 0;
     height: 100%;
     transition: height .3s;
     background: #000
-}
-
-.name p label{
-    display: none;
-}
-
-span.helptext{
-    display: none;
-    margin: 10px;
-    font-weight: 100;
-    justify-content: center;
-}
-
-.name ul{
-    font-size: medium;
-    color: crimson;
-}
-
-.bar {
-    width: 0;
-    height: 100%;
-    transition: height .3s;
-    background: #000
-}
-
-.name p label{
-    display: none;
-}
-</style>
+}</style>
 <style>
 
     .custom-select {
@@ -768,7 +729,6 @@ span.helptext{
     }
 
     .footer-area {
-        border-top: 3px solid #51C9A6;
         padding: 0;
         color: #666;
         position: relative;
@@ -1086,7 +1046,7 @@ span.helptext{
         left: 20%;
         /* transform: translate(-50%,-50%); */
         width: 800px;
-        height: 440px;
+        height: 500px;
         background: #fff;
         border-radius: 5px;
         box-shadow: 0px 5px 20px rgba(0,0,0,0.5);
@@ -1097,7 +1057,7 @@ span.helptext{
         top: 0;
         left: 0;
         width: 300px;
-        height: 440px;
+        height: 500px;
         border-top-left-radius:  5px;
         border-bottom-left-radius:  5px;
         background-image: linear-gradient(to bottom, #4fb68d 0%, #98c87b 100%);
@@ -1323,47 +1283,6 @@ span.helptext{
         visibility: visible;
         transition: 1s cubic-bezier(.95,.32,.37,1.31);
     }
-
-    /* Responsive columns */
-    @media screen and (max-width: 600px) {
-        section .page {
-            display: flex;
-            flex-direction: column;
-            left: 10%;
-            width: 86%;
-            height: 560px;
-        }
-        
-        section .page .welcome{
-            width: 100%;
-            display: none;
-        }
-
-        section .page .login{
-            left: 1px;
-            width: auto;
-            margin-top: 30px;
-            position: relative;
-        }
-
-        section .page .login input{
-            width: 80%;
-        }
-
-        section .page .login .login-info{
-            display: block;
-            margin-top: 20px;
-        }
-
-    }
-
-    @media screen and (min-width: 601px) {
-        section .page .login .login-info{
-            display: none;
-        }
-    }
-
-
     input[type="submit"], form button, .submit-btn{
         line-height: 10px !important;
     }
@@ -1382,66 +1301,15 @@ span.helptext{
         background: #4fb68d !important;
         color: #fff !important;
     }
-    .info {
-        width: 100%;
-    }
 </style>
 
-<div class="productListPage">
-    <div class="breadcrumbs" style="padding: 10px; display: flex; font-size: small;">
-        <div><a href="/">Home</a></div>
-        <i class="fa fa-angle-right" style="
-        padding-top: inherit;
-        padding-left: 5px;
-        padding-right: 4px;"></i>
-        <div class="active">Signin</div>
-        <div class="clearFix"></div>
-    </div>
-    <div class="bodyMain contentBox">
-        <section>
-            <div class="page">
-                <div class="welcome active">
-                    <h2>Medsbuy Welcomes!</h2>
-                    <p class="text-left" style="font-size: 14px;padding-top: 20px;"><img src="/static/img/tick.svg" style="width: 10px;">&nbsp; Medsbuy bringing health to you</p>
-                    <p class="text-left" style="font-size: 14px;"><img src="/static/img/tick.svg" style="width: 10px;">&nbsp;Discover great offers and discounts.</p>
-                    <p class="text-left" style="font-size: 14px;"><img src="/static/img/tick.svg" style="width: 10px;">&nbsp;Discover great offers and discounts.</p>
-
-                    <p class="text-left" style="font-size: 15px;"><img src="/static/img/tick.svg" style="width: 10px;">&nbsp;Avail free doctor cnsultation</p>
-                    <button class="sign_in active">Sign In</button>
-                    <a href="/signup/" class="btn active klp" style="font-size: 22px;margin-top: 30px;margin-left: 2px;">Sign Up</a>
-                </div>
-
-                <div class="login active">
-                    <p style="padding-top: 50px;"><h3>Sign In</h3></p>
-                    <form method="POST" style="padding-top: 30px;">
-                        {% csrf_token %}
-                        <div class="name">
-                            {{ form.as_p }}
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-outline-success" style="
-                        height: 40px;
-                        border-radius: 20px;
-                        width: 160px;">SIGN IN</button>
-                        <p><a href="../forgot-password/" style="color: #71be84;">Forgot Password?</a></p>
-                    </form>
-                    <div class="login-info">
-                        <p>Don't have an account?</p>
-                        <a href="../signup" style="color: #71be84;">SIGN UP</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="clearFix"></div>
-        <article class="categoryDescription"></article>
-    </div>
-</div>
-
-
 
 </div>
+{% block content %}
+    <h1>Base.html</h1>
+{% endblock content %}
 <div class="trust-section float-left w-100 text-center">
-    <img src="{% static 'img/new-info.png' %}" class="info">
+    <img src="{% static 'register/images/new-info.png' %}">
     <!--container end-->
     <footer class="footer-area">
         <div class="footer-top">
@@ -1451,8 +1319,7 @@ span.helptext{
                     <div class="col-md-6s col-lg-4s">
                         <!-- footer logo -->
                         <div class="footer-logo">
-                            <a href="/"><img src="/static/img/medsbuy-logo.png" style="float: left;width: 300px;"
-                                                      alt="Medsbuy logo"/></a>
+                            <a href="/"><img src="{% static 'register/images/medsbuy-logo.png' %}" style="float: left;width: 300px;" alt="Medsbuy logo"></a>
                         </div>
                         <!-- footer logo -->
                         <div class="about-footer" style="float: left;">
@@ -1461,7 +1328,7 @@ span.helptext{
                                 <p class="phone-info">
                                     NEED HELP?
                                     <span>
-                                        9897939938<br/>
+                                        9897939938<br>
                                                 
                                     </span>
                                 </p>
@@ -1469,19 +1336,19 @@ span.helptext{
                             <div class="social-info">
                                 <ul>
                                     <li>
-                                        <a target="_blank" href="https://www.facebook.com/medsbuyOfficial"><i class="fa fa-facebook"></i></a>
+                                        <a target="_blank" href="https://www.facebook.com/medsbuyOfficial"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+                                        <a target="_blank" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
+                                        <a target="_blank" href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                                     </li>
                                     <!-- <li>
                                         <a  href="#"><i class="fa fa-google"></i></a>
                                     </li> -->
                                     <li>
-                                        <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
+                                        <a target="_blank" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -1528,25 +1395,16 @@ span.helptext{
                             </div>
                             
                             <div id="mc_embed_signup" class="subscribe-form">
-                                <form id="mc-embedded-subscribe-form" class="validate"  name="mc-embedded-subscribe-form" method="post" action="/subscribe/">
-                                    <input type="hidden" name="csrfmiddlewaretoken" value="jjWvLo40si3nZTiQPjjJxD8KQAoOdKD5gEqOLD1BXpJbmIPPLgobl3XDjFQyJOHy">
+                                <form id="mc-embedded-subscribe-form" class="validate" name="mc-embedded-subscribe-form" method="post" action="/subscribe/">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="hXsEez6kyCP4l7CrpQL61fJYQclLjHPseiWXeO3V3JvSIW9qlNQyPFyRjhNvPLTV">
                                     <div id="mc_embed_signup_scroll" class="mc-form">
-                                        <input class="email subscribe_text" type="email" required=""
-                                               placeholder="Enter your email here.." name="email" value=""/>
+                                        <input class="email subscribe_text" type="email" required="" placeholder="Enter your email here.." name="email" value="">
                                         
                                         <div class="clear">
-                                            <input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe" value="Sign Up"/>
+                                            <input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe" value="Sign Up">
                                         </div>
                                     </div>
                                 </form>
-                            </div>
-                            <div class="img_app">
-                                <a href="#"><img
-                                        src="https://htmldemo.hasthemes.com/ecolife-preview/ecolife/assets/{% static 'img/icons/app_store.png"
-                                        alt=""/></a>
-                                <a href="#"><img
-                                        src="https://htmldemo.hasthemes.com/ecolife-preview/ecolife/assets/{% static 'img/icons/google_play.png"
-                                        alt=""/></a>
                             </div>
                         </div>
                     </div>
@@ -1581,8 +1439,6 @@ span.helptext{
     });
 
     $(document).ready(function(){
-        $("#id_username").attr('placeholder', 'Enter Username');
-        $("#id_password").attr('placeholder', 'Password');
         $('#mc-embedded-subscribe-form').submit(function(){
             $('.c-error').remove();
             if( $.trim($('#mc-embedded-subscribe-form .email').val()) == ''){
@@ -1594,7 +1450,5 @@ span.helptext{
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-</body>
-</html>
+</body></html>

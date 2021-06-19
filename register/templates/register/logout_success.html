@@ -1,0 +1,21 @@
+{% extends "register/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+        <meta http-equiv="Refresh" content="2; url='../../'" />
+        <title>Home</title>
+    {% endblock title %}
+</head>
+<body>
+    {% block content %}
+    <div class="content" style="align-items: center;">
+        <div class="item">
+            <h1>You are logged out successfully.</h1>
+            <br><br>
+            <h6>Redirecting to the home page in 3 seconds...</h6>
+        </div>
+    </div>  
+    {% endblock content %}
+</body>
+</html>

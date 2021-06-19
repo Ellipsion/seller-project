@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import fields
 
@@ -20,9 +20,23 @@ class registerform(UserCreationForm):
         model = User # Changes the user model.(default)
         fields = ["username", "email", "password1", "password2"]
 
+class update_profile(forms.ModelForm):
+    Name = forms.CharField(max_length=100, required=True)
+    Email_id = forms.EmailField(required=True)
+    Mobile = forms.IntegerField(required=True)
+    Address = forms.CharField(required=True)
+    Landmark = forms.CharField(required=True)
+    State = forms.CharField(max_length=20, required=True)
+    Pin_code = forms.IntegerField(max_value=999999,min_value=000000, required=True)
+    
+    class Meta:
+        model = User
+        fields = ["Name", "Email_id", "Mobile", "Address", "Landmark", "State", "Pin_code"]
+
+
 
 class login(UserCreationForm):
-        def __init__(self, *args, **kwargs):
-            super(login, self).__init__(*args, **kwargs)
-            self.fields['username'].widget.attrs['placeholder'] = 'username'
-            self.fields['password '].widget.attrs['placeholder'] = 'password'
+    def __init__(self, *args, **kwargs):
+        super(login, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = 'username'
+        self.fields['password '].widget.attrs['placeholder'] = 'password'
