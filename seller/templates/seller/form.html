@@ -1,0 +1,81 @@
+{% load static %} {% load crispy_forms_tags %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=604800" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Consultation</title>
+
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="{% static 'seller/assets/js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+    <!-- Bootstrap4 files-->
+    <script src="{% static 'seller/assets/js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+    <link href="{% static 'seller/assets/css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Font awesome 5 -->
+    <link href="{% static 'seller/assets/fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+    <!-- custom style -->
+
+    <link href="{% static 'seller/assets/css/ui.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'seller/assets/css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'seller/assets/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- custom javascript -->
+    <script src="{% static 'seller/assets/js/script.js' %}" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+
+
+
+    <!-- ========================= SECTION MAIN  ========================= -->
+    <section class="section-main" style="padding-bottom: 10px;">
+
+        <form class="jotform-form" action="#" method="POST" enctype="multipart/form-data"  id="202734202737450" autocomplete="on">
+            <!-- --  -->
+            {% csrf_token %}
+            <div role="main" class="form-all">
+                <div class="form-header-group  header-default">
+
+                    <div class="header-text httac htvam">
+                        <h2>{% block heading %}Heading{% endblock %}</h2>
+
+                    </div>
+                </div>
+                <div class="mx-5">
+                    <div class="mx-5">
+                        <br> {{form|crispy}}
+                    </div>
+                </div>
+                <div class="form-buttons-wrapper">
+                    <input type="submit" class="yrbtn mx-5" value="{% block button %}Submit{% endblock%}" >
+                    <button onclick="window.location.href='/seller/'" type="button" class="btn-primary">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <!-- ========================= SECTION MAIN END// ========================= -->
+
+    <!-- ========================= FOOTER ========================= -->
+
+
+    <!-- ========================= FOOTER END // ========================= -->
+
+
+
+</body>
+
+</html>

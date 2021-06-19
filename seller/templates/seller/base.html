@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell on Medsbuy</title>
+
+
+    <!-- Compiled and minified Materialize CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'seller/css/style.css' %}">
+    <!-- --  -->
+    {% block addons %}{% endblock %}
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper blue">
+
+            <a href="{% url 'seller:dash' %}" class="brand-logo hide-on-large-only">
+                Medsbuy Seller
+            </a>
+            <ul id="nav-mobile" class="hide-on-med-and-down">
+                <li>
+                    <a class="app-logo" href="{% url 'seller:dash' %}">
+                        Medsbuy
+                    </a>
+                </li>
+                <li><a href="{% url 'seller:dash' %}">Dashboard</a></li>
+                <!-- Dropdown Trigger -->
+                <li>
+                    <ul id="dropdown" class="dropdown-content">
+                        <li><a href="#">Hub Order</a></li>
+                        <li><a href="#">Active Order</a></li>
+                        <li><a href="#">Cancelled Order</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Return Order</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                    <a class="dropdown-button" href="#" data-activates="dropdown">Orders<i class = "mdi-navigation-arrow-drop-down right" style="line-height: inherit; height: inherit;"></i></a>
+                </li>
+                <li>
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li><a href="{%url 'seller:add_product'  %}">Add Product</a></li>
+                        <li><a href="{%url 'seller:products'  %}">Manage Products</a></li>
+                        <li><a href="#">Track Approval</a></li>
+                    </ul>
+                    <a class="dropdown-button" href="#" data-activates="dropdown2">Listing<i class = "mdi-navigation-arrow-drop-down right" style="line-height: inherit; height: inherit;"></i></a>
+                </li>
+                <li><a href="# ">Rate &amp; Review</a></li>
+                <li><a href="# ">Payment</a></li>
+                <li><a href="# ">Performance</a></li>
+                <li><a href="# ">Opportunities</a></li>
+                <li>
+                    <a href="# ">
+                        <i class="material-icons ">notifications</i>
+                    </a>
+                </li>
+            </ul>
+            <ul id="nav-mobile " class="right hide-on-med-and-down ">
+                <li>
+                    <i class="material-icons ">account_circle</i>
+                </li>
+                <li>
+                    <a href="# ">
+                        {{ seller.username }}
+                    </a>
+                </li>
+                <li>
+                    <a href="# ">
+                        <i class="material-icons ">more_vert</i>
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </nav>
+    {% block main %} {% endblock %}
+</body>
+
+
+
+
+</html>

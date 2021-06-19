@@ -1,0 +1,1 @@
+web: gunicorn medsbuy.wsgi --log-file -

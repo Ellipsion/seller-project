@@ -1,0 +1,131 @@
+.app-logo {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.new-card {
+    padding: 0 !important;
+}
+
+.new-card p {
+    margin: 0em;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-left: 0.5em;
+}
+
+.new-card span {
+    display: block;
+    font-size: 0.8rem;
+}
+
+.new-btn {
+    width: 100%;
+    margin-top: 0.3em;
+    border-radius: 0.3rem;
+    text-transform: capitalize;
+}
+
+.new-card .col {
+    padding: 0 !important;
+    height: 3em;
+}
+
+.new-card .row {
+    padding: 0.5em;
+    margin: 0;
+}
+
+.top-card {
+    margin-top: 2em;
+}
+
+.new-icon {
+    font-size: 3rem;
+}
+
+.dash-wrapper {
+    padding: 1em 4em 0.5em 4em;
+}
+
+.overview-col .card-panel {
+    padding: 0.2em;
+}
+
+.overview-col .card-panel .row {
+    margin-bottom: 0.2em;
+}
+
+.overview-col .card-heading {
+    margin: 0.2em;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.4em;
+    color: rgb(163, 162, 162);
+}
+
+.overview-col .data {
+    margin: 0em;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgb(5, 209, 5);
+}
+
+.overview-col .side-assets {
+    color: rgb(5, 209, 5);
+    margin: 0em;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.overview-col .side-assets span {
+    color: black;
+    display: block;
+}
+
+.table-heading {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+    color: rgb(36, 36, 36);
+}
+
+.data-card {
+    padding: 0.5em;
+}
+
+.data-card .row {
+    margin: 0;
+}
+
+.data-col {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.data-col .card-panel {
+    color: rgb(163, 162, 162);
+    padding: 0.2em;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 0.6em;
+    box-shadow: none;
+}
+
+.border-left {
+    border-right: 1px solid rgb(185, 185, 185);
+    border-radius: 0;
+}
+
+.data-col .card-panel p {
+    margin: 0.4em;
+    font-size: 1.2rem;
+    color: rgb(32, 32, 32);
+    font-weight: 500;
+}
+
+.data-col .card-panel p span {
+    font-size: 0.8rem;
+}

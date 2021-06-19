@@ -1,0 +1,66 @@
+{% extends 'seller/base.html' %}
+<!-- --  -->
+{% block main %}
+<div class="container">
+    <h3 class=" center ">Welcome to <span class="green-text text-lighten-1 ">Medsbuy</span></h3>
+    <div class="row ">
+        <div class="col s0 m1 l2 "></div>
+        <div class="col s12 m10 l8 ">
+            <div class="row ">
+                <h5 class="col s12 ">You are almost ready to start selling!</h5>
+                <h6 class="col s12 grey-text ">Please complete all the steps below</h6>
+                <!-- <div class="col s12 divider "></div> -->
+
+                <div class="col s12 card-panel new-card top-card white ">
+                    <div class="row ">
+                        <div class="col s1 ">
+                            <i class="material-icons new-icon blue-text text-lighten-1 ">article</i>
+                        </div>
+                        <div class="col s9 ">
+                            <p>Company Details
+
+                                <span>Display information, Pickup address, Primary & Login Detail</span>
+                            </p>
+                        </div>
+                        <div class="col s2 ">
+                            <a class="waves-effect waves-light blue new-btn btn ">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 card-panel new-card top-card white ">
+                    <div class="row ">
+                        <div class="col s1 ">
+                            <i class="material-icons new-icon teal-text text-lighten-1 ">account_balance</i>
+                        </div>
+                        <div class="col s9 ">
+                            <p>Bank Details
+                            </p>
+                        </div>
+                        <div class="col s2 ">
+                            <a href="{% url 'seller:bank' %} " class="waves-effect waves-light blue new-btn btn ">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 card-panel new-card top-card white ">
+                    <div class="row ">
+                        <div class="col s1 ">
+                            <i class="material-icons new-icon yellow-text text-darken-1 ">store</i>
+                        </div>
+                        <div class="col s9 ">
+                            <p>Business Details
+
+                                <span>KYC & Legal Detail </span>
+                            </p>
+                        </div>
+                        <div class="col s2 ">
+                            <a href="{% url 'seller:business' %} " class="waves-effect waves-light blue new-btn btn ">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- --  -->
+{% endblock %}
