@@ -3,7 +3,10 @@
 {% block main %}
 
 <div class="container">
-    <h5>Product Listing</h5>
+
+    <h5>Product Listing <span><a href="{% url 'seller:add_product' %}" class="right">Add Product</a></span> </h5>
+
+
     <table class="responsive striped">
         <thead>
             <tr>
@@ -21,7 +24,8 @@
             {% for product in products %}
             <tr>
                 <td>
-                    <img src="{{ product.product_image.url }}" alt="Product Image" data-holder-rendered="true" width="200" height="200">
+                    <img src="{{ product.product_image.url }}" alt="Product Image" data-holder-rendered="true"
+                        width="200" height="200">
                 </td>
                 <td>{{ product.product_name }}</td>
                 <td>{{ product.product_price }}</td>
@@ -31,10 +35,12 @@
                 <td>
                     <div>
                         <ul id="dropdown3" class="dropdown-content">
-                            <li><a href="#">Edit</a></li>
-                            <li><a href="{%url 'seller:products'  %}">Delete</a></li>
+                            <li><a href="{% url 'seller:update_product' product.id %}">Edit</a></li>
+                            <li><a href="{% url 'seller:delete_product' product.id %}">Delete</a></li>
                         </ul>
-                        <a class="dropdown-button" href="#" data-activates="dropdown3"><i class="material-icons">settings</i><i class = "mdi-navigation-arrow-drop-down" style="line-height: inherit; height: inherit;"></i></a>
+                        <a class="dropdown-button" href="#" data-activates="dropdown3"><i
+                                class="material-icons">settings</i><i class="mdi-navigation-arrow-drop-down"
+                                style="line-height: inherit; height: inherit;"></i></a>
                     </div>
                 </td>
             </tr>

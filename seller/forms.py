@@ -3,6 +3,15 @@ from .models import *
 from django.forms import ModelForm
 
 
+class CompanyDetailsForm(ModelForm):
+    class Meta:
+        model = CompanyDetails
+        exclude = ["seller"]
+        widgets = {'pincode': forms.TextInput(),
+                   'contact_number': forms.TextInput(),
+                   }
+
+
 class BankDetailsForm(ModelForm):
     class Meta:
         model = BankDetails
