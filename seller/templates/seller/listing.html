@@ -24,8 +24,10 @@
             {% for product in products %}
             <tr>
                 <td>
+                {% if product.product_image is not None  %}
                     <img src="{{ product.product_image.url }}" alt="Product Image" data-holder-rendered="true"
-                        width="200" height="200">
+                        width="60" height="60">
+                {% endif %}
                 </td>
                 <td>{{ product.product_name }}</td>
                 <td>{{ product.product_price }}</td>
